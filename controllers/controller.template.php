@@ -11,9 +11,9 @@ class TemplateController {
  // Main route URL
  static public function path() {
     if (!empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == 'on') {
-        return "https:3000//" . $_SERVER['SERVER_NAME'] . "/analisisparcial/";
+        return "https:3000//" . $_SERVER['SERVER_NAME'] . "/parcial/";
     } else {
-        return "http://" . $_SERVER['SERVER_NAME'] . "/analisisparcial/";
+        return "http://" . $_SERVER['SERVER_NAME'] . "/parcial/";
     }
   }
 

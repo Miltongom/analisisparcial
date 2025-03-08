@@ -38,6 +38,37 @@ echo "Ruta base: " . $path; // Esto imprimirá la ruta base en pantalla para dep
         include 'modules/copyright.php';
         ?>
     </div>
+<!-- IMPROVED LOGIN MODAL -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-4" style="border-radius: 15px; background: rgba(255, 255, 255, 0.9); box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);">
+            <div class="modal-header border-0">
+                <h5 class="modal-title text-center w-100" id="loginModalLabel">🔐 Sign In</h5>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label fw-bold">📧 Email</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            <input type="email" class="form-control" id="loginEmail" name="email" placeholder="example@email.com" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label fw-bold">🔑 Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Your password" required>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-primary w-100" style="border-radius: 5px; font-size: 1.1rem;">🛡️ Sign In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Agregar FontAwesome para los íconos -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>

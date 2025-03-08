@@ -54,3 +54,59 @@ window.addEventListener('DOMContentLoaded', event => {
 });
 
 
+
+// IMPROVED LOGIN CODE
+document.addEventListener("DOMContentLoaded", function () {
+    const loginForm = document.getElementById("loginForm");
+    const loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
+
+    if (loginForm) {
+        loginForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById("loginEmail").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            // Basic validation before submission
+            if (!email || !password) {
+                alert("⚠️ All fields are required.");
+                return;
+            }
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert("⚠️ Please enter a valid email.");
+                return;
+            }
+
+            console.log("🔍 Sending data:", email, password);
+
+            // Create FormData object (safer and more flexible)
+            const formData = new FormData();
+            formData.append("email", email);
+            formData.append("password", password);
+
+            try {
+                const response = await fetch("views/pages/login/login.php", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await response.json();
+                console.log("🔍 Server response:", data);
+
+                if (data.success) {
+                    alert("✅ " + data.message);
+                    loginModal.hide();
+                    setTimeout(() => {
+                        window.location.href = data.redirect;
+                    }, 1000);
+                } else {
+                    alert("❌ " + data.message);
+                }
+            } catch (error) {
+                console.error("❌ Login error:", error);
+                alert("🚨 Connection error. Please try again.");
+            }
+        });
+    }
+});
